@@ -1,5 +1,8 @@
 package main
 
+// Advent of Code contest
+// https://adventofcode.com/2019/day/1
+
 import (
 	"bufio"
 	"fmt"
@@ -8,9 +11,13 @@ import (
 	"strconv"
 )
 
-func day01_2(n int) (ans int) {
+func day01a(n int) int {
+	return (n/3)-2
+}
+
+func day01b(n int) (ans int) {
 	for {
-		res := (n/3)-2
+		res := day01a(n)
 		if res > 0{
 			ans += res
 		} else {
@@ -39,10 +46,10 @@ func main() {
 		num, _ := strconv.Atoi(line)
 
 		// Part1 - divide by three, round down, and subtract 2.
-		count1 += ((num/3)-2)
+		count1 += day01a(num)
 
 		// Part2 - do the same until its negative
-		count2 += day01_2(num)
+		count2 += day01b(num)
 	}
 
 	fmt.Println("Answer 1: ", count1)

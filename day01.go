@@ -11,13 +11,15 @@ import (
 	"strconv"
 )
 
-func day01a(n int) int {
+const FILENAME = "./_advent/day01/day01input.txt"
+
+func countMass(n int) int {
 	return (n/3)-2
 }
 
-func day01b(n int) (ans int) {
+func countFuel(n int) (ans int) {
 	for {
-		res := day01a(n)
+		res := countMass(n)
 		if res > 0{
 			ans += res
 		} else {
@@ -29,7 +31,6 @@ func day01b(n int) (ans int) {
 }
 
 func main() {
-	const FILENAME = "./_advent/day01input.txt"
 
 	f, err := os.Open(FILENAME)
 	if err != nil {
@@ -46,12 +47,13 @@ func main() {
 		num, _ := strconv.Atoi(line)
 
 		// Part1 - divide by three, round down, and subtract 2.
-		count1 += day01a(num)
+		count1 += countMass(num)
 
 		// Part2 - do the same until its negative
-		count2 += day01b(num)
+		count2 += countFuel(num)
 	}
 
 	fmt.Println("Answer 1: ", count1)
 	fmt.Println("Answer 2: ", count2)
+	// 3443395, 5162216
 }
